@@ -1,26 +1,54 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
+  --font-sans: var(--font-geist-sans); /* Assuming Geist font is loaded; adjust if needed */
+  --font-mono: var(--font-geist-mono);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif; /* Fallback; switch to var(--font-sans) for Geist */
+}
+
+/* Liquid Glass Inspired Effects */
+.liquid-glass-card {
+  background: rgba(255, 255, 255, 0.15); /* Glassy semi-transparency */
+  backdrop-filter: blur(20px) saturate(180%); /* Fluid Gaussian blur, Apple-style */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle optic edge */
+  border-radius: 24px; /* Rounded for expressiveness */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); /* Depth layering */
+  transition: transform 0.4s ease-out, backdrop-filter 0.4s ease-out; /* Fluid motion */
+  color: var(--foreground);
+}
+
+.liquid-glass-card:hover {
+  transform: scale(1.03) translateY(-4px); /* Dynamic lift and scale */
+  backdrop-filter: blur(24px) saturate(200%); /* Enhanced fluidity on interact */
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+}
+
+/* Hero and Sections */
+.hero {
+  background: url('/hero-bg.jpg') no-repeat center/cover; /* Add your bg image */
+  @apply liquid-glass-card p-12 text-center;
+}
+
+/* Apply to landing elements */
+@layer components {
+  .feature-card { @apply liquid-glass-card p-6 m-4; }
+  .cta-btn { @apply liquid-glass-card bg-blue-600 text-white px-8 py-4 rounded-full font-bold hover:bg-blue-700; }
 }

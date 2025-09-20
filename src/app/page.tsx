@@ -1,46 +1,56 @@
-'use client'; // Client for any interactivity (e.g., future hooks)
+'use client';
 
 import React from 'react';
 import Link from 'next/link';
-import CheckoutButton from '@/components/CheckoutButton'; // For CTA integration
 
 export default function LandingPage() {
   return (
-    <div className="landing-page bg-[var(--background)] text-[var(--foreground)] font-sans"> {/* San Francisco inspired */}
-      {/* Hero Section: Fluid Glassy Welcome */}
-      <section className="hero min-h-screen flex flex-col justify-center items-center">
-        <h1 className="text-6xl font-bold mb-4 tracking-tight">Doodz Threads</h1>
-        <p className="text-2xl mb-8 max-w-2xl">Unleash your style with custom print-on-demand clothing. Pick epic designs, apply to your favorite pieces—like t-shirts, hoodies, or mugs—and let us handle the rest with seamless Stripe payments and Printify fulfillment.</p>
-        <Link href="/shop" className="cta-btn">Start Customizing</Link> {/* Link to shop page or DesignSelector */}
+    <div className="landing-page bg-[#353535] text-[#FCF7FF] font-sans">
+      {/* Header with 5.11 Tactical-inspired Nav */}
+      <header className="bg-[#1A1A1A] text-[#FCF7FF] py-4 border-b border-[#8A897C]">
+        <div className="container mx-auto flex justify-between items-center px-6">
+          <h1 className="text-3xl font-bold uppercase">Doodz Threads</h1>
+          <nav className="flex space-x-6">
+            <Link href="/shop" className="hover:text-[#18FFEA] font-semibold">Shop</Link>
+            <Link href="/design-studio" className="hover:text-[#18FFEA] font-semibold">Design Studio</Link>
+            <Link href="/about" className="hover:text-[#18FFEA] font-semibold">About</Link>
+            <Link href="/cart" className="hover:text-[#18FFEA] font-semibold">Cart</Link>
+            <Link href="/account" className="hover:text-[#18FFEA] font-semibold">Account</Link>
+          </nav>
+        </div>
+      </header>
+
+      {/* Hero Section: Bold Welcome */}
+      <section className="hero bg-[#2D2D2D] py-20 text-center">
+        <h2 className="text-5xl font-bold mb-6 uppercase tracking-wide text-[#20A4F3]">Gear Up with Custom Designs</h2>
+        <p className="text-xl mb-8 max-w-2xl mx-auto leading-relaxed text-[#8A897C]">Unleash your inner warrior with Doodz Threads. Customize t-shirts, hoodies, and more with bold designs, powered by print-on-demand.</p>
+        <Link href="/shop" className="bg-[#18FFEA] text-[#353535] px-8 py-4 rounded-lg hover:bg-[#20A4F3] hover:text-[#FCF7FF] transition-all duration-300 font-bold text-lg">Lock & Load</Link>
       </section>
 
-      {/* Features Section: Glassy Cards for E-Commerce Flow */}
-      <section className="features container mx-auto py-16">
-        <h2 className="text-4xl font-bold text-center mb-12">Why Doodz Threads?</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="feature-card">
-            <img src="/designs/preview1.png" alt="Design on Hoodie" className="w-full h-48 object-cover rounded-t-2xl mb-4" />
-            <h3 className="text-2xl font-semibold mb-2">Endless Designs for Any Clothing</h3>
-            <p>Browse our gallery, select a design, and apply it to your desired piece—t-shirts, hoodies, or more. Preview in real-time before adding to cart.</p>
+      {/* Featured Products */}
+      <section className="featured py-16 text-center">
+        <h2 className="text-4xl font-bold mb-10 text-[#18FFEA] uppercase">Featured Gear</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-6">
+          <div className="bg-[#1A1A1A] p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+            <h3 className="text-2xl font-semibold mb-2 uppercase text-[#20A4F3]">Tactical T-Shirts</h3>
+            <p className="text-sm text-[#8A897C]">Rock your style with rugged, custom designs.</p>
           </div>
-          <div className="feature-card">
-            <img src="/designs/preview2.png" alt="Cart with Custom Items" className="w-full h-48 object-cover rounded-t-2xl mb-4" />
-            <h3 className="text-2xl font-semibold mb-2">Seamless Cart & Stripe Checkout</h3>
-            <p>Add your customized clothing, review your cart, and pay securely with Stripe. Fast, safe, and ready for on-demand magic.</p>
+          <div className="bg-[#1A1A1A] p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+            <h3 className="text-2xl font-semibold mb-2 uppercase text-[#20A4F3]">Combat Hoodies</h3>
+            <p className="text-sm text-[#8A897C]">Stay warm with bold, personalized flair.</p>
           </div>
-          <div className="feature-card">
-            <img src="/designs/preview3.png" alt="Printify Fulfillment" className="w-full h-48 object-cover rounded-t-2xl mb-4" />
-            <h3 className="text-2xl font-semibold mb-2">Printify Powers On-Demand Fulfillment</h3>
-            <p>Once paid, Printify prints your designs on high-quality clothing and ships worldwide—no inventory hassles for you.</p>
+          <div className="bg-[#1A1A1A] p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
+            <h3 className="text-2xl font-semibold mb-2 uppercase text-[#20A4F3]">Elite Gear</h3>
+            <p className="text-sm text-[#8A897C]">Top-tier picks for the fearless.</p>
           </div>
         </div>
       </section>
 
-      {/* CTA Footer: Integrate Checkout */}
-      <footer className="cta bg-gray-900 py-12 text-center">
-        <h2 className="text-3xl font-bold mb-4 text-white">Ready to Create Your Custom Gear?</h2>
-        <CheckoutButton className="cta-btn" /> {/* Starts Stripe flow for demo */}
-      </footer>
+      {/* Call to Action */}
+      <section className="cta bg-[#2D2D2D] py-16 text-center">
+        <h2 className="text-4xl font-bold mb-6 uppercase text-[#20A4F3]">Ready for Battle?</h2>
+        <Link href="/design-studio" className="text-[#18FFEA] underline hover:text-[#FCF7FF] text-xl font-semibold hover:underline-offset-4">Create Your Gear Now</Link>
+      </section>
     </div>
   );
 }
